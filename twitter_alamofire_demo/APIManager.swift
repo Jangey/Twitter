@@ -50,6 +50,16 @@ class APIManager: SessionManager {
         }
     }
     
+    static func logout() {
+        // 1. Clear current user
+        User.current = nil
+        
+        // TODO: 2. Deauthorize OAuth tokens
+        
+        // 3. Post logout notification
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
 
     func getCurrentAccount(completion: @escaping (User?, Error?) -> ()) {
         request(URL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")!)
