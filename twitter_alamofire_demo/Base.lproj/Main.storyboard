@@ -69,14 +69,14 @@
                                                     <rect key="frame" x="10" y="10" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mc5-gL-16L">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mc5-gL-16L" userLabel="User Name">
                                                     <rect key="frame" x="115" y="10" width="70.5" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZE5-mc-lYQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZE5-mc-lYQ" userLabel="Screen Name">
                                                     <rect key="frame" x="220.5" y="16" width="58.5" height="12"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -101,22 +101,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reply-icon" translatesAutoresizingMaskIntoConstraints="NO" id="pHn-7l-PWt">
-                                                    <rect key="frame" x="113" y="133" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="retweet-icon" translatesAutoresizingMaskIntoConstraints="NO" id="BVY-e9-5ZG">
-                                                    <rect key="frame" x="179" y="133" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="favor-icon" translatesAutoresizingMaskIntoConstraints="NO" id="P4g-S9-jFO">
-                                                    <rect key="frame" x="245" y="133" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="message-icon" translatesAutoresizingMaskIntoConstraints="NO" id="qFB-W3-OYx">
-                                                    <rect key="frame" x="311" y="133" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="146" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8p6-DO-rWm">
                                                     <rect key="frame" x="148" y="143" width="21" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -138,22 +122,48 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5G-dQ-oht" userLabel="Retweet">
+                                                    <rect key="frame" x="177" y="133" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="retweet-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="U1g-kw-izy" eventType="touchUpInside" id="fLZ-h5-Fle"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V8-r2-WRf" userLabel="Favor">
+                                                    <rect key="frame" x="243" y="133" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapFavor:" destination="U1g-kw-izy" eventType="touchUpInside" id="uC6-gi-3GB"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcB-Jg-Gu4" userLabel="Reply">
+                                                    <rect key="frame" x="115" y="133" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="reply-icon"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGe-5z-KBf" userLabel="Message">
+                                                    <rect key="frame" x="311" y="133" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="message-icon"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favorButton" destination="2V8-r2-WRf" id="sro-1y-ebq"/>
                                             <outlet property="favorCount" destination="re6-Kt-U48" id="gW7-kU-Ihg"/>
-                                            <outlet property="favorIcon" destination="P4g-S9-jFO" id="pNF-Lg-DPo"/>
-                                            <outlet property="messageIcon" destination="qFB-W3-OYx" id="S0l-JX-TFZ"/>
+                                            <outlet property="messageButton" destination="UGe-5z-KBf" id="3yY-rZ-3Ul"/>
                                             <outlet property="profilePicture" destination="444-3I-lpj" id="f5N-W7-6uc"/>
                                             <outlet property="replayCount" destination="8p6-DO-rWm" id="qn7-tH-hYe"/>
-                                            <outlet property="replyIcon" destination="pHn-7l-PWt" id="7J5-zJ-ZS7"/>
+                                            <outlet property="replyButton" destination="bcB-Jg-Gu4" id="2X6-1q-2fy"/>
+                                            <outlet property="retweetButton" destination="n5G-dQ-oht" id="XsS-Oo-80O"/>
                                             <outlet property="retweetCount" destination="yWn-7h-aOx" id="mch-HF-qu7"/>
-                                            <outlet property="retweetIcon" destination="BVY-e9-5ZG" id="cSM-KU-UfV"/>
-                                            <outlet property="screenName" destination="mc5-gL-16L" id="gIz-Ey-n6R"/>
+                                            <outlet property="screenname" destination="ZE5-mc-lYQ" id="Lxd-Yh-pqA"/>
                                             <outlet property="selectedIcon" destination="KcQ-3h-iuQ" id="3Fw-u7-n20"/>
                                             <outlet property="timestamp" destination="iKp-1n-HfY" id="oWD-Mh-2Dt"/>
                                             <outlet property="tweetText" destination="epC-Fs-Q5Z" id="hBK-c6-X2Z"/>
-                                            <outlet property="username" destination="ZE5-mc-lYQ" id="kzZ-Sz-AXD"/>
+                                            <outlet property="username" destination="mc5-gL-16L" id="fyd-QN-dts"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -181,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlF-i2-Ves" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="36.431784107946029"/>
+            <point key="canvasLocation" x="1659.4202898550725" y="36.160714285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXZ-z8-8LI">

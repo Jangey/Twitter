@@ -15,7 +15,7 @@ class Tweet {
     var text: String // Text content of tweet
     var favoriteCount: Int? // Update favorite count label
     var favorited: Bool? // Configure favorite button
-    var retweetCount: Int // Update favorite count label
+    var retweetCount: Int? // Update favorite count label
     var retweeted: Bool // Configure retweet button
     var user: User? // Author of the Tweet
     var createdAtString: String? // String representation of date posted

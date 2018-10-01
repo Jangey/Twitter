@@ -12,14 +12,14 @@ class User {
     
     // TODO: Add properties
     var name: String?
-    var screenName: String?
+    var screenname: String
     var id: Int64
     var profileURLPath: URL
     
     // TODO: Create initializer
     init(dictionary: [String: Any]) {
-        name = dictionary["name"] as? String
-        screenName = dictionary["screen_name"] as? String
+        name = (dictionary["name"] as? String)!
+        screenname = (dictionary["screen_name"] as? String)!
         // Initialize any other properties
         id = dictionary["id"] as! Int64
         profileURLPath = URL(string: dictionary["profile_image_url_https"] as! String)!
