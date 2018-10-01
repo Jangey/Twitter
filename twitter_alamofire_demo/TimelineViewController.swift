@@ -8,8 +8,11 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UIViewController, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
+    var tweets: [Tweet] = []
+    var refreshControl: UIRefreshControl!
     
     @IBAction func didTapLogout(_ sender: Any) {
         APIManager.logout()
@@ -19,21 +22,43 @@ class TimelineViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(TimelineViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        tableView.rowHeight = 180
+        tableView.dataSource = self
+        
+        fetchTweet()
     }
 
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchTweet()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func fetchTweet() {
+        APIManager.shared.getHomeTimeLine { (tweets: [Tweet]?, error: Error?) in
+            if let tweets = tweets {
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }else if let error = error{
+                print(error.localizedDescription)
+            }
+        }
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        cell.tweet = tweets[indexPath.row]
+        return cell
+    }
 }
