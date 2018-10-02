@@ -47,8 +47,8 @@ class TweetCell: UITableViewCell {
         didSet{
             tweetText.text = tweet.text
             username.text = tweet.user?.name
-            screenname.text = "@\(tweet.user!.screenname) \(tweet.createdAtString!)"
-            //            timestamp.text = tweet.createdAtString
+            screenname.text = "@\(tweet.user!.screenname)"
+            timestamp.text = tweet.createdAtString
             if let cnt = tweet.favoriteCount{
                 favorCount.text = String(cnt)
             }

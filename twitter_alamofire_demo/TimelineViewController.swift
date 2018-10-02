@@ -20,7 +20,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(TimelineViewController.didPullToRefresh(_:)), for: .valueChanged)
@@ -61,4 +61,15 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         cell.tweet = tweets[indexPath.row]
         return cell
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            let tweet = tweets[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.tweet = tweet
+        }
+    }
+ 
 }
