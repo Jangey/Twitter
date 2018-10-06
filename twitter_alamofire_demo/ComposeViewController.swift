@@ -70,7 +70,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
                     
                     // handle cancel response here. Doing nothing will dismiss the view.
                     // Go back to home page.
-                    let timeLineViewPage = self.storyboard?.instantiateViewController(withIdentifier: "TweetsNavigationController")
+                    let timeLineViewPage = self.storyboard?.instantiateViewController(withIdentifier: "TweetsTabBarController")
                     let appDelegate = UIApplication.shared.delegate
                     appDelegate?.window??.rootViewController = timeLineViewPage
                 }

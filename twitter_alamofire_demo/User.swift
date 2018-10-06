@@ -15,6 +15,10 @@ class User {
     var screenname: String
     var id: Int64
     var profileURLPath: URL
+    var backgroundURLPath: URL
+    var tweets: Int?
+    var following: Int?
+    var followers: Int?
     
     private static var _current: User?
     var dict: [String: Any]?
@@ -26,6 +30,15 @@ class User {
         // Initialize any other properties
         id = dictionary["id"] as! Int64
         profileURLPath = URL(string: dictionary["profile_image_url_https"] as! String)!
+        if !(dictionary["profile_banner_url"] == nil){
+            backgroundURLPath = URL(string: dictionary["profile_banner_url"] as! String)!
+        }else{
+            backgroundURLPath = URL(string: "nil")!
+        }
+        tweets = dictionary["statuses_count"] as? Int
+        following = dictionary["friends_count"] as? Int
+        followers = dictionary["followers_count"] as? Int
+        
     }
     
     static var current: User? {

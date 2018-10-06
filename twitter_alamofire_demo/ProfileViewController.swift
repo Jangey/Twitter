@@ -9,12 +9,36 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var backgroundPicture: UIImageView!
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var screenname: UILabel!
+    
+    @IBOutlet weak var tweetCount: UILabel!
+    @IBOutlet weak var followingCount: UILabel!
+    @IBOutlet weak var followerCount: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        backgroundPicture.af_setImage(withURL: (User.current?.backgroundURLPath)!)
+        profilePicture.af_setImage(withURL: (User.current?.profileURLPath)!)
+        username.text = User.current?.name
+        screenname.text = "@\(User.current!.screenname)"
+        tweetCount.text = String(User.current!.tweets!)
+        followingCount.text = String(User.current!.following!)
+        followerCount.text = String(User.current!.followers!)
+        
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     
 
     /*
