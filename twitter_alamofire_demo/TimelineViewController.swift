@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource {
+class TimelineViewController: UIViewController, UITableViewDataSource, ComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet] = []
@@ -33,6 +33,10 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
 
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchTweet()
+    }
+    
+    func did(post: Tweet) {
+        self.fetchTweet()
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,14 +66,21 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tableView.indexPath(for: cell) {
-            let tweet = tweets[indexPath.row]
-            let detailViewController = segue.destination as! DetailViewController
-            detailViewController.tweet = tweet
+        
+        if let cell = sender as? UITableViewCell {
+            if let indexPath = tableView.indexPath(for: cell) {
+                let tweet = tweets[indexPath.row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.tweet = tweet
+            }
         }
+        else if segue.identifier == "composeSegue"{
+            let composeViewController = segue.destination as! ComposeViewController
+            composeViewController.delegate = self
+            
+        }
+    
     }
  
 }

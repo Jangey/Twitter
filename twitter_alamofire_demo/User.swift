@@ -16,6 +16,9 @@ class User {
     var id: Int64
     var profileURLPath: URL
     
+    private static var _current: User?
+    var dict: [String: Any]?
+    
     // TODO: Create initializer
     init(dictionary: [String: Any]) {
         name = (dictionary["name"] as? String)!
@@ -25,5 +28,28 @@ class User {
         profileURLPath = URL(string: dictionary["profile_image_url_https"] as! String)!
     }
     
-    static var current: User?
+    static var current: User? {
+        get{
+            if _current == nil {
+                let defaults = UserDefaults.standard
+                if let userDate = defaults.data(forKey: "currentUserData"){
+                    let dict = try! JSONSerialization.jsonObject(with: userDate, options: []) as! [String: Any]
+                    _current = User(dictionary: dict)
+                }
+            }
+            return _current
+        }
+        
+        set(user){
+            _current = current
+            let defaults = UserDefaults.standard
+            if let user = user {
+                let data = try! JSONSerialization.data(withJSONObject: user.dict!, options: [])
+                defaults.set(data, forKey: "currentUserData")
+            }else{
+                defaults.removeObject(forKey: "currentUserData")
+            }
+        }
+        
+    }
 }
