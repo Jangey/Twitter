@@ -28,11 +28,32 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
         tableView.rowHeight = 180
         tableView.dataSource = self
         
-        fetchTweet()
+        APIManager.shared.getHomeTimeLine { (tweets: [Tweet]?, error: Error?) in
+            if let tweets = tweets {
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }else if let error = error{
+                print(error.localizedDescription)
+            }
+        }
     }
 
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        fetchTweet()
+        //fetchTweet()
+        APIManager.shared.getNewHomeTimeLine{ (tweets, error) in
+            if let tweets = tweets {
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+                //self.activityIndicator.stopAnimating()
+            }else if let error = error {
+                print("Error geeting home timeline: " + error.localizedDescription)
+                //self.myAlert(title: "Cannot Get Tweets", message: "The Internet connection appears to be offline.")
+            }
+            
+        }
+        self.refreshControl.endRefreshing()
     }
     
     func did(post: Tweet) {
